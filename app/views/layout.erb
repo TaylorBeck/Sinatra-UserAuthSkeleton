@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/normalize.css?app=skills">
+  <link rel="stylesheet" href="/css/application.css?app=skills">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js?app=skills"></script>
+
+  <title></title>
+</head>
+<body>
+<header>
+  <a class="button" href="/">Home</a>
+  <% if current_user %>
+    <h2><a href="/users/<%= current_user.id %>"><%= current_user.full_name %></a></h2>
+    <form action="/logout" method=POST>
+      <input type="hidden" name="_method" value=DELETE>
+      <input type="submit" value="Logout">
+    </form>
+  <% else %>
+    <a class="button" href="/users/new">Register</a>
+    <a class="button" href="/login">Login</a><br><br><br><br>
+  <% end %>
+</header>
+  <%= yield %>
+</body>
+</html>
